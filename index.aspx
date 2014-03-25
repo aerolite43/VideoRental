@@ -67,7 +67,9 @@
             <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
             &nbsp;<asp:TextBox ID="txtBoxPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
-            <asp:Button ID="btnLogin" runat="server" Text="Login" />
+            <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" />
+                <br />
+                <asp:Label ID="lblResult" runat="server"></asp:Label>
     </div>
 
 
