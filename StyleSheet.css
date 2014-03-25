@@ -1,0 +1,29 @@
+﻿#signInlbl
+{
+    font-size:20px;
+    font-weight:bold;
+}
+#centerDiv
+{
+    position:absolute;
+    left:30%;
+    margin-bottom:50px;
+}
+#leftDiv
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:100%;
+    width:200px;
+}
+#rightDiv
+{
+    position:absolute;
+    left:55%;
+    width:500px;
+}
+body 
+{
+    position:relative;
+}
