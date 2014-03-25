@@ -13,7 +13,7 @@ public partial class index : System.Web.UI.Page
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        if (txtBoxUsername.Text == "username" && txtBoxPassword.Text == "password")
+        if (txtBoxUsername.Text == "username" && txtBoxPassword.Text == "Newpassword")
             lblResult.Text = "Password accepted.";
         else
             lblResult.Text = "Incorrect credential.";
