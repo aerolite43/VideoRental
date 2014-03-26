@@ -7,12 +7,17 @@
 <link rel="Stylesheet" type="text/css" href="StyleSheet.css" />
     <title></title>
 </head>
-<body style="width:1000px;">
+<body style="width:1000px; top: -1px; left: -1px;">
     <form id="form1" runat="server">
     <div id="leftDiv">
+        <div style="padding-left:25px;">
+            <asp:Button ID="Button1" runat="server" Text="Specials" Font-Size="Smaller" />    
+            &nbsp;<asp:Button ID="Button2" runat="server" Text="Classics" 
+                Font-Size="Smaller" />
+            &nbsp;<asp:Button ID="Button3" runat="server" Text="Oscars" 
+                Font-Size="Smaller" />
+        </div>
     
-        <asp:Image ID="Image2" runat="server" ImageUrl="~/images/header.jpg" 
-            Width="263px" />
         <br />
         <asp:Image ID="Image3" runat="server" ImageUrl="~/images/banner.jpg" />
         <br />
@@ -71,6 +76,24 @@
                 <br />
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
     </div>
+
+
+
+
+
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:DatabaseConnectionString %>" 
+        SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
+    <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
+    </asp:GridView>
+
+
+
+
+
+
+
+
 
 
 
