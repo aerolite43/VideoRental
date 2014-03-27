@@ -10,11 +10,18 @@ using System.Data.Linq;
 
 public partial class index : System.Web.UI.Page
 {
+    Model model;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //lblTest.Text = "Movie title<br>Movie company<br>Summary";
-        setMovieTitle();
+        if (!IsPostBack)
+        {
+            //lblTest.Text = "Movie title<br>Movie company<br>Summary";
+            model = new Model();
+            setMovieTitle();
+        }
     }
+
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         /*
@@ -25,9 +32,11 @@ public partial class index : System.Web.UI.Page
         grdView.DataSource = tMovie.Where(m => m.Director.Contains(txtDirector.Text));
         grdView.DataBind();
          */
-        
 
-        if (txtBoxUsername.Text == "username" && txtBoxPassword.Text == "Newpassword")
+        model = new Model();
+
+        bool isLoggin = model.login(txtBoxUsername.Text, txtBoxPassword.Text);
+        if (isLoggin)
             lblResult.Text = "Password accepted.";
         else
             lblResult.Text = "Incorrect credential.";
@@ -55,16 +64,8 @@ public partial class index : System.Web.UI.Page
 
     public void setMovieTitle()
     {
-        string conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
-        DataContext db = new DataContext(conString);
-        var tMovie = db.GetTable<allmovies>();
-
-        var query =
-            from movies in tMovie
-            select movies;
+        var list = model.getMovie();
         
-        // Convert the result into an array
-        var list = new List<allmovies>(query);
 
         lblMovieTitle1.Text = list[0].Company;
         lblMovieSummary1.Text = list[0].Director;
