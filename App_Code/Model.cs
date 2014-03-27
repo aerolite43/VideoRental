@@ -67,4 +67,51 @@ public class Model
         else
             return true;
     }
+
+    /* 
+     @author Andrei Cordova
+     @description return me the top 10 rentals.
+     @Date 27/03/14
+     @TargetDate April 9'th
+     */
+    public List<allmovies> getTop10Rentals()
+    {
+        return null;
+    }
+
+    /* 
+     @author Andrei Cordova
+     @description RETURN me new release movies.
+     perhaps check the date when a movie was added.
+     @Date 27/03/14
+     @TargetDate April 9'th
+    */
+    public List<allmovies> getNewReleases()
+    {
+        return null;
+    }
+
+    /* 
+     @author Hermenegildo Lagniton
+     @description register page. make me a layout as well pleashhh
+     return true if the registration completes and false if registration fails.
+     @Date 27/03/14
+     @TargetDate April 9'th
+    */
+    public bool register(string firstName, string lastName, string etcetc)
+    {
+        return false;
+    }
+
+    /* 
+     @author Adrian Roy A. Baguio
+     @description return a list of objects depends on what object was on the search
+     I'm thinking of using CHAIN OF RESPONSIBILITY here =)
+     @Date 27/03/14
+     @TargetDate April 9'th
+    */
+    public bool search(Object obj)
+    {
+        return false;
+    }
 }
