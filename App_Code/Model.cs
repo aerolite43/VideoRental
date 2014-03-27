@@ -18,7 +18,8 @@ public class Model
     public Model()
 	{
         // Load database connection string
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
+        //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; 
         db = new DataContext(conString);
 	}
 
