@@ -77,7 +77,16 @@ public class Model
      */
     public List<allmovies> getTop10Rentals()
     {
-        return null;
+        var tTop = db.GetTable<allmovies>();
+
+        //var query2 = from movies in tTop select movies where id = 10;
+
+        var query2 = (from movies in tTop select movies).Take(10);
+
+
+        var list = new List<allmovies>(query2);
+
+        return list;
     }
 
     /* 

@@ -80,6 +80,11 @@
        
 
     
+            <br />
+            <asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label>
+       
+
+    
     </div>
         <div id="rightDiv">
                 &nbsp;<br />
@@ -105,16 +110,6 @@
         SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
     <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
     </asp:GridView>
-
-
-
-
-
-
-
-
-
-
 
 
 

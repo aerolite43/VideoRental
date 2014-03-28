@@ -16,6 +16,9 @@ public class allmovies
     public string Company { get; set; }
 
     [Column]
+    public string Title { get; set; }
+
+    [Column]
     public string Director { get; set; }
 
     [Column]

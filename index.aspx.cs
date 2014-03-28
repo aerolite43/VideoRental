@@ -12,13 +12,19 @@ public partial class index : System.Web.UI.Page
 {
     Model model;
 
+    Model model2;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             //lblTest.Text = "Movie title<br>Movie company<br>Summary";
             model = new Model();
+
+            model2 = new Model();
+
             setMovieTitle();
+            setTop10();
         }
     }
 
@@ -64,14 +70,34 @@ public partial class index : System.Web.UI.Page
 
     public void setMovieTitle()
     {
-        var list = model.getMovie();
-        
+        var listMovies = model.getMovie();
 
-        lblMovieTitle1.Text = list[0].Company;
-        lblMovieSummary1.Text = list[0].Director;
-        lblMovieCompany1.Text = list[0].Editor;
+
+        lblMovieTitle1.Text = listMovies[0].Company;
+        lblMovieSummary1.Text = listMovies[0].Director;
+        lblMovieCompany1.Text = listMovies[0].Editor;
+
+        lblMovieTitle2.Text = listMovies[1].Company;
+        lblMovieSummary2.Text = listMovies[1].Director;
+        lblMovieCompany2.Text = listMovies[1].Editor;
 
     }
+
+    public void setTop10()
+     {
+
+         var listTop = model2.getTop10Rentals();
+         string top10 = "";
+         int counter = 1;
+        foreach(allmovies movie in listTop){
+            top10 += counter + ". " + movie.Title + "<br>";
+            counter++;
+        }
+        lblTop10.Text = top10;
+         //lblTop10.Text = listTop[0].Company;
+      }
+
+
     protected void Button1_Click(object sender, EventArgs e)
     {
 
