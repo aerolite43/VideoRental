@@ -58,13 +58,8 @@
         <asp:Image ID="Image5" runat="server" ImageUrl="~/images/line.jpg" />
         </div>
     
-        <asp:Image ID="ImageB" runat="server" ImageUrl="~/images/comedy.jpg" />
+
         
-        <asp:Image ID="ImageC" runat="server" ImageUrl="~/images/rentals.jpg" />
-
-        <asp:Image ID="ImageD" runat="server" ImageUrl="~/images/releases.jpg" />
-       
-
     </div>
     <div id="centerDiv">
             <div style="margin-top:20px">
@@ -72,7 +67,19 @@
                 &nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
                 <asp:ListItem>Director</asp:ListItem>
                 </asp:DropDownList>
+                <br />
+                <br />
+
             </div>
+                    <asp:Image ID="ImageB" runat="server" style="margin-top:5x;" ImageUrl="~/images/comedy.jpg" />
+                    <br />
+                        
+
+        
+        <asp:Image ID="ImageC" runat="server" ImageUrl="~/images/rentals.jpg" /><asp:Image ID="ImageD" runat="server" ImageUrl="~/images/releases.jpg" />
+       
+
+    
     </div>
         <div id="rightDiv">
                 &nbsp;<br />
