@@ -13,14 +13,19 @@
         <div style="padding-left:25px;">
             <asp:Button ID="Button1" runat="server" Text="Specials" Font-Size="Smaller" />    
             &nbsp;<asp:Button ID="Button2" runat="server" Text="Classics" 
-                Font-Size="Smaller" />
+                Font-Size="Smaller" style="height: 21px" />
             &nbsp;<asp:Button ID="Button3" runat="server" Text="Oscars" 
                 Font-Size="Smaller" />
         </div>
     
-        <br />
+
         <asp:Image ID="Image3" runat="server" ImageUrl="~/images/banner.jpg" />
         <br />
+
+        <asp:Image ID="ImageA" runat="server" ImageUrl="~/images/OrderThisNow.jpg" />
+        <br />
+
+
         <div class="movieInfo" style="margin-left:20px; width: 241px;">
         <asp:Label ID="lblMovieTitle1" runat="server" Text="Movie title"></asp:Label>
         <br />
@@ -53,6 +58,13 @@
         <asp:Image ID="Image5" runat="server" ImageUrl="~/images/line.jpg" />
         </div>
     
+        <asp:Image ID="ImageB" runat="server" ImageUrl="~/images/comedy.jpg" />
+        
+        <asp:Image ID="ImageC" runat="server" ImageUrl="~/images/rentals.jpg" />
+
+        <asp:Image ID="ImageD" runat="server" ImageUrl="~/images/releases.jpg" />
+       
+
     </div>
     <div id="centerDiv">
             <div style="margin-top:20px">

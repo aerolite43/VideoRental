@@ -72,4 +72,8 @@ public partial class index : System.Web.UI.Page
         lblMovieCompany1.Text = list[0].Editor;
 
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }
