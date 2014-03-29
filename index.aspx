@@ -66,7 +66,7 @@
             <asp:TextBox ID="txtBoxSearch" runat="server" 
                     ontextchanged="txtBoxSearch_TextChanged1"></asp:TextBox>
                 &nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
-                <asp:ListItem>Director</asp:ListItem>
+                <asp:ListItem Value="director">Director</asp:ListItem>
                 <asp:ListItem Value="actor">Actor</asp:ListItem>
                 <asp:ListItem Value="character">Character</asp:ListItem>
                 <asp:ListItem Value="title">Title</asp:ListItem>
