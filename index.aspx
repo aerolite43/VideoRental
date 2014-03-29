@@ -7,7 +7,7 @@
 <link rel="Stylesheet" type="text/css" href="StyleSheet.css" />
     <title></title>
 </head>
-<body style="width:1000px; top: -1px; left: -1px;">
+<body style="width:1000px; top: -1px; left: 17px;">
     <form id="form1" runat="server">
     <div id="leftDiv">
         <div style="padding-left:25px;">
@@ -76,9 +76,10 @@
                         
 
         
-        <asp:Image ID="ImageC" runat="server" ImageUrl="~/images/rentals.jpg" /><asp:Image ID="ImageD" runat="server" ImageUrl="~/images/releases.jpg" />
+        <asp:Image ID="ImageC" runat="server" ImageUrl="~/images/rentals.jpg" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Image ID="ImageD" runat="server" ImageUrl="~/images/releases.jpg" />
        
-
     
             <br />
             <asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label>

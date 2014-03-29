@@ -8,6 +8,8 @@
     position:absolute;
     left:30%;
     margin-bottom:50px;
+    top: 0px;
+    width: 515px;
 }
 #leftDiv
 {
@@ -20,8 +22,9 @@
 #rightDiv
 {
     position:absolute;
-    left:60%;
+    left:82%;
     width:500px;
+    top: 1px;
 }
 body 
 {
