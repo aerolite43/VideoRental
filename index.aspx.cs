@@ -16,10 +16,12 @@ public partial class index : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        model = new Model();
+
         if (!IsPostBack)
         {
             //lblTest.Text = "Movie title<br>Movie company<br>Summary";
-            model = new Model();
+            
 
             model2 = new Model();
 
@@ -101,5 +103,32 @@ public partial class index : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
 
+    }
+    protected void txtBoxSearch_TextChanged(object sender, EventArgs e)
+    {
+    }
+    protected void txtBoxSearch_TextChanged1(object sender, EventArgs e)
+    {
+        List<allmovies> moviesFound = model.search(DropDownList1.SelectedValue, txtBoxSearch.Text);
+
+        if (moviesFound != null)
+        {
+            if (moviesFound.Count != 0)
+            {
+                string moviesText = "";
+                foreach (allmovies movie in moviesFound)
+                {
+                    moviesText += movie.Title + "<br/>";
+                }
+                lblTop10.Text = moviesText;
+            }
+            else
+            {
+                lblTop10.Text = "No result..";
+            }
+
+
+        }
+        moviesFound = null;
     }
 }

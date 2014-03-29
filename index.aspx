@@ -63,9 +63,14 @@
     </div>
     <div id="centerDiv">
             <div style="margin-top:20px">
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtBoxSearch" runat="server" 
+                    ontextchanged="txtBoxSearch_TextChanged1"></asp:TextBox>
                 &nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
                 <asp:ListItem>Director</asp:ListItem>
+                <asp:ListItem Value="actor">Actor</asp:ListItem>
+                <asp:ListItem Value="character">Character</asp:ListItem>
+                <asp:ListItem Value="title">Title</asp:ListItem>
+                <asp:ListItem Value="keyword">Keyword</asp:ListItem>
                 </asp:DropDownList>
                 <br />
                 <br />
