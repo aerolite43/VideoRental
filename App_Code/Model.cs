@@ -120,8 +120,109 @@ public class Model
      @Date 27/03/14
      @TargetDate April 9'th
     */
-    public bool search(Object obj)
+    /* 
+     @author Adrian Roy A. Baguio
+     @description return a list of objects depends on what object was on the search
+     I'm thinking of using CHAIN OF RESPONSIBILITY here =)
+     @Date 27/03/14
+     @TargetDate April 9'th
+     @DateCompletion 28/03/14
+    */
+    public List<allmovies> search(string searchtype, string searchText)
     {
-        return false;
+        var tMovie = db.GetTable<allmovies>();
+        var tCast = db.GetTable<cast>();
+        var tDirector = db.GetTable<director>();
+
+        if (searchtype == "director")
+        {
+            var query =
+            from movies in tMovie
+            join d in tDirector on movies.Id equals d.Id
+            where d.name == searchText
+            select movies;
+
+            var list = new List<allmovies>(query);
+            return list;
+        }
+        else if (searchtype == "actor")
+        {
+            var query =
+            from movies in tMovie
+            join c in tCast on movies.Id equals c.Id
+            where c.castname == searchText
+            select movies;
+
+            var list = new List<allmovies>(query);
+            return list;
+        }
+        else if (searchtype == "character")
+        {
+            var query =
+            from movies in tMovie
+            join c in tCast on movies.Id equals c.Id
+            where c.castrole == searchText
+            select movies;
+
+            var list = new List<allmovies>(query);
+            return list;
+        }
+        else if (searchtype == "title")
+        {
+            var query =
+            from movies in tMovie
+            where movies.Title == searchText
+            select movies;
+
+            var list = new List<allmovies>(query);
+            return list;
+
+        }
+        else if (searchtype == "keyword")
+        {
+            // Director
+            var query =
+            from movies in tMovie
+            join d in tDirector on movies.Id equals d.Id
+            where d.name == searchText
+            select movies;
+
+            var list = new List<allmovies>(query);
+
+            // Actor
+            query =
+            from movies in tMovie
+            join c in tCast on movies.Id equals c.Id
+            where c.castname == searchText
+            select movies;
+            list.AddRange(query);
+
+            // Character
+            query =
+            from movies in tMovie
+            join c in tCast on movies.Id equals c.Id
+            where c.castrole == searchText
+            select movies;
+            // Append the new query to that list.
+            list.AddRange(query);
+
+            // Title
+            query =
+            from movies in tMovie
+            where movies.Title == searchText
+            select movies;
+            list.AddRange(query);
+
+            return list;
+
+        }
+        else
+        {
+
+        }
+
+
+        return null;
+
     }
 }

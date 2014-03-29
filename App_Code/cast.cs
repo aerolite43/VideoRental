@@ -4,15 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Data.Linq.Mapping;
 
-/// <summary>
-/// Summary description for Director
-/// </summary>
+// note, you will have to add the System.Dat.Linq reference
+// in the projects property manager 
 [Table]
-public class director
+public class cast
 {
     [Column(IsPrimaryKey = true, IsDbGenerated = true)]
     public int Id { get; set; }
 
     [Column]
-    public string name { get; set; }
+    public string castname { get; set; }
+
+    [Column]
+    public string castrole { get; set; }
+
 }
