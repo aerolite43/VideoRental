@@ -131,4 +131,8 @@ public partial class index : System.Web.UI.Page
         }
         moviesFound = null;
     }
+    protected void btnRegister_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("register.aspx");
+    }
 }

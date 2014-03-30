@@ -19,7 +19,8 @@ public class Model
 	{
         // Load database connection string
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; 
+        //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Andrei's Database Connetion String
+        conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString; // Hermie's Database Connection String
         db = new DataContext(conString);
 	}
 
@@ -103,14 +104,41 @@ public class Model
 
     /* 
      @author Hermenegildo Lagniton
-     @description register page. make me a layout as well pleashhh
-     return true if the registration completes and false if registration fails.
-     @Date 27/03/14
+     @description: Takes data from register page after button click.
+     Returns true if customer data is saved to database, otherwise returns false.
+     @Date 30/03/14
      @TargetDate April 9'th
     */
-    public bool register(string firstName, string lastName, string etcetc)
+    public bool register(string firstName, string lastName, string addr1, string addr2,
+        string city, string prov, string postal, string phone)
     {
+        customer newUser = new customer();
+        newUser.Customer_id = 101;
+        newUser.First_name = firstName;
+        newUser.Last_name = lastName;
+        newUser.Address1 = addr1;
+        newUser.Address2 = addr2;
+        newUser.City = city;
+        newUser.Province = prov;
+        newUser.Pcode = postal;
+        newUser.Phone = phone;
+
+        /*CURRENTLY NON-FUNCTIONAL
+        try
+        {
+            db.GetTable<customer>().InsertOnSubmit(newUser);
+            db.SubmitChanges();
+        }
+        catch (SqlException e)
+        {
+            String message = e.ToString();
+            Console.WriteLine(message);
+            return false;
+        }
+        return true;
+        */
         return false;
+
     }
 
     /* 

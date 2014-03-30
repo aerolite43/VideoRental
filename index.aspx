@@ -97,12 +97,16 @@
             <asp:Label ID="signInlbl" runat="server" Text="Sign in"></asp:Label>
             <br />
             <asp:Label ID="Label2" runat="server" Text="Username"></asp:Label>
+                :
             <asp:TextBox ID="txtBoxUsername" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
-            &nbsp;<asp:TextBox ID="txtBoxPassword" runat="server" TextMode="Password"></asp:TextBox>
+                :&nbsp;<asp:TextBox ID="txtBoxPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
             <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" />
+                &nbsp;
+                <asp:Button ID="btnRegister" runat="server" onclick="btnRegister_Click" 
+                    Text="Register" />
                 <br />
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
     </div>
@@ -112,7 +116,7 @@
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DatabaseConnection2 %>" 
+        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
         SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
     <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
     </asp:GridView>
