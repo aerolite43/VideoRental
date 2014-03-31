@@ -10,7 +10,7 @@ using System.Data.Linq.Mapping;
 [Table]
 public class customer
 {
-    [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+    [Column(IsPrimaryKey = true/*, IsDbGenerated = true*/)]
     public int Customer_id { get; set; }
 
     [Column]

@@ -111,33 +111,37 @@ public class Model
     */
     public bool register(string firstName, string lastName, string addr1, string addr2,
         string city, string prov, string postal, string phone)
-    {
-        customer newUser = new customer();
-        newUser.Customer_id = 101;
-        newUser.First_name = firstName;
-        newUser.Last_name = lastName;
-        newUser.Address1 = addr1;
-        newUser.Address2 = addr2;
-        newUser.City = city;
-        newUser.Province = prov;
-        newUser.Pcode = postal;
-        newUser.Phone = phone;
+    {   
+        Table<customer> custTable = db.GetTable<customer>();
 
-        /*CURRENTLY NON-FUNCTIONAL
+        var newUser = new customer
+        {
+            Customer_id = 9,
+            First_name = firstName,
+            Last_name = lastName,
+            Address1 = addr1,
+            Address2 = addr2,
+            City = city,
+            Province = prov,
+            Pcode = postal,
+            Phone = phone,
+            Login = firstName,
+            Password = lastName
+        };
+
+        custTable.InsertOnSubmit(newUser);
+
         try
         {
-            db.GetTable<customer>().InsertOnSubmit(newUser);
             db.SubmitChanges();
         }
-        catch (SqlException e)
+        catch (Exception e)
         {
-            String message = e.ToString();
-            Console.WriteLine(message);
+            Console.WriteLine("Error: " + e + "\n");
             return false;
         }
+
         return true;
-        */
-        return false;
 
     }
 
