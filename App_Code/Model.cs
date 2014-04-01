@@ -112,11 +112,13 @@ public class Model
     public bool register(string firstName, string lastName, string addr1, string addr2,
         string city, string prov, string postal, string phone)
     {   
-        Table<customer> custTable = db.GetTable<customer>();
+        var custTable = db.GetTable<customer>();
+
+        int maxIDquery = (int) (from cust in custTable select cust.Customer_id).Max() + 1;
 
         var newUser = new customer
         {
-            Customer_id = 9,
+            Customer_id = maxIDquery,
             First_name = firstName,
             Last_name = lastName,
             Address1 = addr1,
@@ -137,7 +139,7 @@ public class Model
         }
         catch (Exception e)
         {
-            Console.WriteLine("Error: " + e + "\n");
+            Console.WriteLine(e.Message);
             return false;
         }
 
