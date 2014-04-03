@@ -45,7 +45,7 @@ public partial class index : System.Web.UI.Page
 
         bool isLoggin = model.login(txtBoxUsername.Text, txtBoxPassword.Text);
         if (isLoggin)
-            lblResult.Text = "Password accepted.";
+            Response.Redirect("register.aspx");
         else
             lblResult.Text = "Incorrect credential.";
     }
