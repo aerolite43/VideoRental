@@ -206,7 +206,7 @@ public class Model
         {
             var query =
             from movies in tMovie
-            where movies.Title == searchText
+            where movies.Title.Contains(searchText)
             select movies;
 
             var list = new List<allmovies>(query);
@@ -244,7 +244,7 @@ public class Model
             // Title
             query =
             from movies in tMovie
-            where movies.Title == searchText
+            where movies.Title.Contains(searchText)
             select movies;
             list.AddRange(query);
 
