@@ -20,7 +20,7 @@ public class Model
         // Load database connection string
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Andrei's Database Connetion String
-        conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString; // Hermie's Database Connection String
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Hermie's Database Connection String
         db = new DataContext(conString);
 	}
 
@@ -49,25 +49,26 @@ public class Model
      @description Login, check for username and password
      @date 27/03/2014
      */
-    public bool login(string username, string password)
+    public customer login(string username, string password)
     {
+
         // Initialising table
         var tCustomer = db.GetTable<customer>();
 
         // Make a query
         var query = tCustomer.Where(m => 
-            (m.First_name.Equals(username)
+            (m.Login.Equals(username)
             &&
-            (m.Last_name.Equals(password)
+            (m.Password.Equals(password)
             )));
 
         // Convert the result into an array
         var list = new List<customer>(query);        
 
         if (list.Count == 0)
-            return false;   // If there are result
+            return null;   // If there are result
         else
-            return true;
+            return list[0]; // Return customer
     }
 
     /* 

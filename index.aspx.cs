@@ -13,6 +13,7 @@ public partial class index : System.Web.UI.Page
     Model model;
 
     Model model2;
+    HttpCookie objCookie;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -43,11 +44,32 @@ public partial class index : System.Web.UI.Page
 
         model = new Model();
 
-        bool isLoggin = model.login(txtBoxUsername.Text, txtBoxPassword.Text);
-        if (isLoggin)
+        customer customerUserInfo = model.login(txtBoxUsername.Text, txtBoxPassword.Text);
+        if (customerUserInfo != null)
+        { // Account does exsist
+            objCookie = new HttpCookie("accountInformation");
+
+            // // // // // // //
+            //  Admin account //
+            // // // // // // //
+            if (customerUserInfo.IsAdmin == true)
+            {
+                Response.Redirect("register.aspx");
+            }
+            // // // // // // //
+            // Normal account //
+            // // // // // // //
+            else if (customerUserInfo.IsAdmin == false)
+            {
+                Response.Redirect("register1.aspx");
+            }
+
             Response.Redirect("register.aspx");
+        }
+
         else
-            lblResult.Text = "Incorrect credential.";
+            // Make cookie
+            lblResult.Text = "Invalid credential. Please try again.";
     }
 
     public void sql()

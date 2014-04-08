@@ -42,4 +42,7 @@ public class customer
 
     [Column]
     public string Password { get; set; }
+
+    [Column]
+    public Boolean IsAdmin { get; set; }
 }
