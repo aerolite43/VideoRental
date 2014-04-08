@@ -133,9 +133,7 @@ public partial class index : System.Web.UI.Page
     {
         List<allmovies> moviesFound = model.search(DropDownList1.SelectedValue, txtBoxSearch.Text);
 
-        if (moviesFound != null)
-        {
-            if (moviesFound.Count != 0)
+        if (moviesFound.Count != 0)
             {
                 string moviesText = "";
                 foreach (allmovies movie in moviesFound)
@@ -148,13 +146,28 @@ public partial class index : System.Web.UI.Page
             {
                 lblTop10.Text = "No result..";
             }
-
-
-        }
-        moviesFound = null;
+        //moviesFound = null;
     }
     protected void btnRegister_Click(object sender, EventArgs e)
     {
         Response.Redirect("register.aspx");
+    }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        List<allmovies> moviesFound = model.search(DropDownList1.SelectedValue, txtBoxSearch.Text);
+
+        if (moviesFound.Count != 0)
+        {
+            string moviesText = "";
+            foreach (allmovies movie in moviesFound)
+            {
+                moviesText += movie.Title + "<br/>";
+            }
+            lblTop10.Text = moviesText;
+        }
+        else
+        {
+            lblTop10.Text = "No result..";
+        }
     }
 }
