@@ -64,8 +64,10 @@
     <div id="centerDiv">
             <div style="margin-top:20px">
             <asp:TextBox ID="txtBoxSearch" runat="server" 
-                    ontextchanged="txtBoxSearch_TextChanged1" AutoPostBack="True"></asp:TextBox>
-                &nbsp;<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+                    ontextchanged="txtBoxSearch_TextChanged1" AutoPostBack="True" 
+                    style="height: 25px"></asp:TextBox>
+                &nbsp;<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
+                    onselectedindexchanged="DropDownList1_SelectedIndexChanged">
                 <asp:ListItem Value="director">Director</asp:ListItem>
                 <asp:ListItem Value="actor">Actor</asp:ListItem>
                 <asp:ListItem Value="character">Character</asp:ListItem>

@@ -54,17 +54,18 @@ public partial class index : System.Web.UI.Page
             // // // // // // //
             if (customerUserInfo.IsAdmin == true)
             {
-                Response.Redirect("register.aspx");
+                Response.Redirect("admin.aspx");
             }
             // // // // // // //
             // Normal account //
             // // // // // // //
             else if (customerUserInfo.IsAdmin == false)
             {
-                Response.Redirect("register1.aspx");
+                //Response.Redirect("register.aspx");
+                lblResult.Text = "Cool dudes! your in!";
             }
-
-            Response.Redirect("register.aspx");
+            // HARD 
+            //Response.Redirect("register.aspx");
         }
 
         else
@@ -169,5 +170,9 @@ public partial class index : System.Web.UI.Page
         {
             lblTop10.Text = "No result..";
         }
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
