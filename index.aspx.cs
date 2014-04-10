@@ -48,12 +48,18 @@ public partial class index : System.Web.UI.Page
         if (customerUserInfo != null)
         { // Account does exsist
             objCookie = new HttpCookie("accountInformation");
-
+            DateTime now;
             // // // // // // //
             //  Admin account //
             // // // // // // //
             if (customerUserInfo.IsAdmin == true)
             {
+                objCookie = new HttpCookie("userInformation");
+                now = DateTime.Now;
+
+                objCookie.Values.Add("name", customerUserInfo.First_name + " " + customerUserInfo.Last_name);  // Add First Name
+                objCookie.Values.Add("TimeLoggin", now.ToString());         // Add time when they login
+                Response.Cookies.Add(objCookie);
                 Response.Redirect("admin.aspx");
             }
             // // // // // // //
@@ -61,7 +67,6 @@ public partial class index : System.Web.UI.Page
             // // // // // // //
             else if (customerUserInfo.IsAdmin == false)
             {
-                //Response.Redirect("register.aspx");
                 lblResult.Text = "Cool dudes! your in!";
             }
             // HARD 

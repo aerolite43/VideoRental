@@ -14,6 +14,9 @@ public partial class admin : System.Web.UI.Page
          @date 08/04/2014
          @description hide both divs when page loads.
          */
+        HttpCookie objCookie = Request.Cookies["userInformation"];
+        lblHi.Text = objCookie.Values["name"].ToString();
+        lblLastLoginTime.Text = objCookie.Values["TimeLoggin"].ToString();
         addMovies.Visible = false;
         addPeople.Visible = false;
 
