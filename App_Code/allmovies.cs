@@ -9,7 +9,7 @@ using System.Data.Linq.Mapping;
 [Table]
 public class allmovies
 {
-    [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+    [Column(IsPrimaryKey = true/*, IsDbGenerated = true*/)]
     public int Id { get; set; }
 
     [Column]

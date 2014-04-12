@@ -20,7 +20,7 @@ public class Model
         // Load database connection string
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Andrei's Database Connetion String
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Hermie's Database Connection String
+        conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString; // Hermie's Database Connection String
         db = new DataContext(conString);
 	}
 
@@ -105,7 +105,7 @@ public class Model
 
     /* 
      @author Hermenegildo Lagniton
-     @description: Takes data from register page after button click.
+     @description: Takes data from register page after button click. Saves new customer to database.
      Returns true if customer data is saved to database, otherwise returns false.
      @Date 30/03/14
      @TargetDate April 9'th
@@ -129,10 +129,49 @@ public class Model
             Pcode = postal,
             Phone = phone,
             Login = firstName,
-            Password = lastName
+            Password = lastName,
+            IsAdmin = false
         };
 
         custTable.InsertOnSubmit(newUser);
+
+        try
+        {
+            db.SubmitChanges();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+
+        return true;
+
+    }
+    
+    /* 
+     @author Hermenegildo Lagniton
+     @description: Takes data from admin add movies page
+     Returns true if movie data is saved to database, otherwise returns false.
+     @Date 30/03/14
+     @TargetDate April 9'th
+    */
+    public bool addMovie(string mTitle, string mCompany, string mDirector, string mEditor)
+    {
+        var movieTable = db.GetTable<allmovies>();
+
+        int maxIDquery = (int)(from movie in movieTable select movie.Id).Max() + 1;
+
+        var newMovie = new allmovies
+        {
+            Id = maxIDquery,
+            Title = mTitle,
+            Company = mCompany,
+            Director = mDirector,
+            Editor = mEditor
+        };
+
+        movieTable.InsertOnSubmit(newMovie);
 
         try
         {

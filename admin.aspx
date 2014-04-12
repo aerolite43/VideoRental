@@ -20,7 +20,23 @@
 
         </h1>
         <h1>Add Movies</h1>
-        <asp:Label ID="lblHello" runat="server"></asp:Label>
+        <asp:Label ID="lblTitle" runat="server" Text="Title:"></asp:Label>
+        <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblCompany" runat="server" Text="Company:"></asp:Label>
+        <asp:TextBox ID="txtCompany" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblDirector" runat="server" Text="Director:"></asp:Label>
+        <asp:TextBox ID="txtDirector" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblEditor" runat="server" Text="Editor:"></asp:Label>
+        <asp:TextBox ID="txtEditor" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="btnAddMovie" runat="server" onclick="btnAddMovie_Click" 
+            Text="Add Movie" />
+        <br />
+        <asp:Label ID="lblStatus" runat="server"></asp:Label>
     
     </div>
         <div id="addPeople" runat="server">
@@ -67,6 +83,10 @@
 
     </div>
         <asp:Label ID="lblLastLoginTime" runat="server"></asp:Label>
+        <p>
+            <asp:Button ID="btnIndex" runat="server" onclick="btnIndex_Click" 
+                Text="Back to Index" />
+        </p>
     </form>
 </body>
 </html>

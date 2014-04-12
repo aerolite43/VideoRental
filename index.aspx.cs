@@ -80,7 +80,7 @@ public partial class index : System.Web.UI.Page
 
     public void sql()
     {
-        string conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
+        string conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         DataContext db = new DataContext(conString);
         var tMovie = db.GetTable<allmovies>();
 

@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class admin : System.Web.UI.Page
 {
+    Model model;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         /* 
@@ -22,10 +24,6 @@ public partial class admin : System.Web.UI.Page
 
     }
 
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
     protected void drpDwnListOption_SelectedIndexChanged(object sender, EventArgs e)
     {
          switch (drpDwnListOption.SelectedValue)
@@ -41,5 +39,37 @@ public partial class admin : System.Web.UI.Page
             default:
                 break;
         }
+    }
+
+    protected void btnAddMovie_Click(object sender, EventArgs e)
+    {
+        model = new Model();
+
+        bool addMovieSuccess = model.addMovie(txtTitle.Text, txtCompany.Text, txtDirector.Text, txtEditor.Text);
+
+        if (addMovieSuccess)
+        {
+            lblStatus.Text = "Movie Addition Successful!";
+            clearMovieFields();
+        }
+        else
+        {
+            lblStatus.Text = "Movie Addition Failed! Contact admin for details!";
+        }
+        addMovies.Visible = true;
+
+    }
+
+    private void clearMovieFields()
+    {
+        txtTitle.Text = "";
+        txtCompany.Text = "";
+        txtDirector.Text = "";
+        txtEditor.Text = "";
+    }
+
+    protected void btnIndex_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("index.aspx");
     }
 }
