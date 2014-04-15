@@ -20,7 +20,7 @@ public class Model
         // Load database connection string
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
         //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Andrei's Database Connetion String
-        conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString; // Hermie's Database Connection String
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Hermie's Database Connection String
         db = new DataContext(conString);
 	}
 
@@ -42,6 +42,28 @@ public class Model
         var list = new List<allmovies>(query);
 
         return list;
+    }
+
+    /* 
+     @author Adrian Roy A. Baguio
+     @description return a list of movies. THIS WILL BE CHANGE LATER =)
+     @date 15/04/2014
+ */
+    public allmovies getMovieById(int id)
+    {
+        var tMovie = db.GetTable<allmovies>();
+
+        // Make a query
+        var query = tMovie.Where(m =>
+            (m.Id.Equals(id)));
+
+        // Convert the result into an array
+        var list = new List<allmovies>(query);
+
+        if (list.Count == 0)
+            return null;   // If there are result
+        else
+            return list[0]; // Return movie info
     }
 
     /* 

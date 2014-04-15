@@ -120,7 +120,7 @@
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DatabaseConnection2 %>" 
         SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
     <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
     </asp:GridView>

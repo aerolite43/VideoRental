@@ -120,7 +120,7 @@ public partial class index : System.Web.UI.Page
          string top10 = "";
          int counter = 1;
         foreach(allmovies movie in listTop){
-            top10 += counter + ". " + movie.Title + "<br>";
+            top10 += counter + ". <a href=\"movie.aspx?id=" + movie.Id + "\">" + movie.Title + "</a><br>";
             counter++;
         }
         lblTop10.Text = top10;
