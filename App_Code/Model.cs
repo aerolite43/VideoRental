@@ -18,9 +18,7 @@ public class Model
     public Model()
 	{
         // Load database connection string
-        //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString; // Roy's Database Connetion String
-        //conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Andrei's Database Connetion String
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString; // Hermie's Database Connection String
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString;
         db = new DataContext(conString);
 	}
 
@@ -133,7 +131,8 @@ public class Model
      @TargetDate April 9'th
     */
     public bool register(string firstName, string lastName, string addr1, string addr2,
-        string city, string prov, string postal, string phone)
+        string city, string prov, string postal, string phone,
+        string username, string pass, bool status)
     {   
         var custTable = db.GetTable<customer>();
 
@@ -152,7 +151,7 @@ public class Model
             Phone = phone,
             Login = firstName,
             Password = lastName,
-            IsAdmin = false
+            IsAdmin = status
         };
 
         custTable.InsertOnSubmit(newUser);

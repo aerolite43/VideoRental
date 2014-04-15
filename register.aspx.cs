@@ -27,7 +27,7 @@ public partial class register : System.Web.UI.Page
         model = new Model();
 
         bool registerPass = model.register(txtFirst.Text, txtLast.Text, txtAddr1.Text, txtAddr2.Text,
-            txtCity.Text, txtProv.Text, txtPostal.Text, txtPhone.Text);
+            txtCity.Text, txtProv.Text, txtPostal.Text, txtPhone.Text, txtUsername.Text, txtPassword.Text, false);
         if (registerPass)
         {
             lblRegStatus.Text = "Registration Successful! Press back to login.";

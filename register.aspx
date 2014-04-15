@@ -56,6 +56,15 @@
             <asp:TextBox ID="txtPhone" runat="server" Width="89px"></asp:TextBox>
             <br />
             <br />
+            <asp:Label ID="lblUsername" runat="server" Text="Username:"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <br />
             <asp:Button ID="btnRegister" runat="server" Text="Register" 
                 onclick="btnRegister_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
