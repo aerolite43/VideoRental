@@ -17,8 +17,8 @@ public partial class admin : System.Web.UI.Page
          @description hide both divs when page loads.
          */
         HttpCookie objCookie = Request.Cookies["userInformation"];
-        lblHi.Text = objCookie.Values["name"].ToString();
-        lblLastLoginTime.Text = objCookie.Values["TimeLoggin"].ToString();
+        //loadlblHi.Text = objCookie.Values["name"].ToString();
+        //lblLastLoginTime.Text = objCookie.Values["TimeLoggin"].ToString();
         addMovies.Visible = false;
         addPeople.Visible = false;
 
@@ -71,5 +71,37 @@ public partial class admin : System.Web.UI.Page
     protected void btnIndex_Click(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx");
+    }
+    protected void btnAddUser_Click(object sender, EventArgs e)
+    {
+        string lastName, address2, province, firstName, address, city, postalCode, phone, login, password;
+        bool isAdmin;
+
+        lastName = txtBoxLastName.Text;
+        address2 = txtBoxAddress2.Text;
+        province = txtBoxProvince.Text;
+        firstName = txtBoxFirstName.Text;
+        address = txtBoxAddress1.Text;
+        city = txtBoxCity.Text;
+        postalCode = txtBoxPostalCode.Text;
+        phone = txtBoxPhone.Text;
+        login = txtBoxLogin.Text;
+        password = txtBoxPassword.Text;
+
+        switch (drpDwnListIsAdmin.SelectedValue)
+        {
+            case "yes":
+                isAdmin = true;
+                break;
+            case "no":
+                isAdmin = false;
+                break;
+            default:
+                break;
+        }
+
+
+
+
     }
 }
