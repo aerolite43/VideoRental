@@ -116,6 +116,7 @@
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
             </div>
             <div id="LogoutbuttonDiv" runat="server">
+            <h1 runat="server" visible="false" id="greetingsText">Hi</h1>
                 <asp:Button ID="btnLogout" runat="server" Text="Log Out" 
                     onclick="btnLogout_Click" />
             </div>
