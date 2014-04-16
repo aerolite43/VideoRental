@@ -15,12 +15,14 @@ public partial class Movie : System.Web.UI.Page
 	List<cast> casts = model.getCharactersById(Convert.ToInt32(movieId));
         if (movie != null)
         {
+            movieIdText.InnerText = movie.Id.ToString();
             titleText.InnerText += " " + movie.Title;
             directorText.InnerText += " " + movie.Director;
             editorText.InnerText += " " + movie.Editor;
             companyText.InnerText += " " + movie.Company;
             titleText2.InnerText += " " + movie.Title;
             titleText3.InnerText += " " + movie.Title;
+            movieTitle.Text = movie.Title;
             foreach(cast cast in casts){
                 actorText.InnerHtml += "<br> " + cast.castname;
             }
@@ -57,9 +59,15 @@ public partial class Movie : System.Web.UI.Page
          *********************/
         else
         {
-            addToCartButton.Visible = true;
+            btnAddToCart.Visible = true;
         }
         
+    }
+    protected void btnAddToCart_Click(object sender, EventArgs e)
+    {
+        HttpCookie cartCookie = new HttpCookie("cartInformation");
+        cartCookie.Values.Add(movieIdText.InnerText, "true");
+        Response.Redirect("index.aspx");
 
     }
 }

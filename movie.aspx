@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Movie</title>
+    <title runat="server" id="movieTitle">Movie</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,10 +17,11 @@
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
 </head>
 <body>
+     <form id="form1" runat="server">
      <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="index.aspx">Home</a></li>
         </ul>
         <h3 class="text-muted" runat="server" id="titleText2">Title</h3>
       </div>
@@ -29,7 +30,9 @@
         <h1 runat="server" id="titleText3">Title</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <div runat="server" id="registerButton" visible="false"><p><a class="btn btn-lg btn-success" href="register.aspx" role="button">Sign up today</a></p></div>
-        <div runat="server" id="addToCartButton" visible="false"><p><a class="btn btn-lg btn-success" href="#" role="button">Add To Cart</a></p></div>
+        <asp:Button ID="btnAddToCart" class="btn btn-lg btn-success" runat="server" 
+              Text="Add To Cart" onclick="btnAddToCart_Click" Visible="False" />
+            </p></div>
       </div>
 
 
@@ -46,7 +49,7 @@
 
                     <h4 id="descriptionText" runat="server">Description:</h4>
           <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
+          <h4 id="movieIdText" runat="server" visible="false"></h4>
         </div>
       </div>
 
@@ -60,5 +63,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+     </form>
 </body>
 </html>

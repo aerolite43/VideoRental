@@ -119,6 +119,8 @@
             <h1 runat="server" visible="false" id="greetingsText">Hi</h1>
                 <asp:Button ID="btnLogout" runat="server" Text="Log Out" 
                     onclick="btnLogout_Click" />
+            &nbsp;<asp:Button ID="btnCheckout" runat="server" onclick="btnCheckout_Click" 
+                    Text="Checkout" />
             </div>
     </div>
 

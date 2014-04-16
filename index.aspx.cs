@@ -18,14 +18,23 @@ public partial class index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         model = new Model();
-	HttpCookie objCookieUserInfo = Request.Cookies["userInformation"];
+	    HttpCookie objCookieUserInfo = Request.Cookies["userInformation"];
+        // // // // // // //
+        //  Guest View    //
+        // // // // // // //
         if (objCookieUserInfo == null)
         {
             login.Visible = true;
             LogoutbuttonDiv.Visible = false;
         }
+        // // // // // // //
+        // Logged in view //
+        // // // // // // //
         else
         {
+            greetingsText.InnerText += " " + objCookieUserInfo.Values["name"].ToString() + "!";
+            greetingsText.Visible = true;
+
             login.Visible = false;
             LogoutbuttonDiv.Visible = true;
         }
@@ -85,7 +94,7 @@ public partial class index : System.Web.UI.Page
 
                 objCookie.Values.Add("name", customerUserInfo.First_name + " " + customerUserInfo.Last_name);  // Add First Name
                 objCookie.Values.Add("TimeLoggin", now.ToString());         // Add time when they login
-		objCookie.Values.Add("isAdmin", "true");  
+		        objCookie.Values.Add("isAdmin", "true");  
                 Response.Cookies.Add(objCookie);
                 Response.Redirect("admin.aspx");
             }
@@ -101,7 +110,7 @@ public partial class index : System.Web.UI.Page
                 objCookie.Values.Add("TimeLoggin", now.ToString());         // Add time when they login
                 objCookie.Values.Add("isAdmin", "false");   
                 Response.Cookies.Add(objCookie);
-                Response.Redirect("admin.aspx");
+                Response.Redirect("index.aspx");
                 lblResult.Text = "Cool dudes! your in!";
             }
             // HARD 
@@ -214,5 +223,9 @@ public partial class index : System.Web.UI.Page
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+    protected void btnCheckout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("order.aspx");
     }
 }
