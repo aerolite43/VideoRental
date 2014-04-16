@@ -28,7 +28,8 @@
       <div class="jumbotron">
         <h1 runat="server" id="titleText3">Title</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        <div runat="server" id="registerButton" visible="false"><p><a class="btn btn-lg btn-success" href="register.aspx" role="button">Sign up today</a></p></div>
+        <div runat="server" id="addToCartButton" visible="false"><p><a class="btn btn-lg btn-success" href="#" role="button">Add To Cart</a></p></div>
       </div>
 
 

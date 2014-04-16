@@ -64,6 +64,21 @@ public class Model
             return list[0]; // Return movie info
     }
 
+     public List<cast> getCharactersById(int moveId)
+   {
+        var tCast = db.GetTable<cast>();
+
+        var query =
+        from cast in tCast
+        where cast.Id.Equals(moveId)
+        select cast;
+        var list = new List<cast>(query);
+
+
+
+        return list;
+        }
+    // Actor
     /* 
      @author Adrian Roy A. Baguio
      @description Login, check for username and password

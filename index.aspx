@@ -96,8 +96,9 @@
 
     
     </div>
-        <div id="rightDiv">
-                &nbsp;<br />
+        <div id="rightDiv" runat="server">
+            <div id="login" runat="server">
+            &nbsp;<br />
             <asp:Label ID="signInlbl" runat="server" Text="Sign in"></asp:Label>
             <br />
             <asp:Label ID="Label2" runat="server" Text="Username"></asp:Label>
@@ -113,6 +114,11 @@
                     Text="Register" />
                 <br />
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
+            </div>
+            <div id="LogoutbuttonDiv" runat="server">
+                <asp:Button ID="btnLogout" runat="server" Text="Log Out" 
+                    onclick="btnLogout_Click" />
+            </div>
     </div>
 
 

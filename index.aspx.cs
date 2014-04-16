@@ -18,16 +18,42 @@ public partial class index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         model = new Model();
+	HttpCookie objCookieUserInfo = Request.Cookies["userInformation"];
+        if (objCookieUserInfo == null)
+        {
+            login.Visible = true;
+            LogoutbuttonDiv.Visible = false;
+        }
+        else
+        {
+            login.Visible = false;
+            LogoutbuttonDiv.Visible = true;
+        }
 
         if (!IsPostBack)
         {
             //lblTest.Text = "Movie title<br>Movie company<br>Summary";
+	    HttpCookie objCookie = Request.Cookies["ERROR"];
             
 
             model2 = new Model();
 
             setMovieTitle();
             setTop10();
+        }
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        if (Request.Cookies["userInformation"] != null)
+        {
+            HttpCookie myCookie = new HttpCookie("userInformation");
+            myCookie.Expires = DateTime.Now.AddDays(-10);
+            myCookie.Value = null;
+            HttpContext.Current.Response.SetCookie(myCookie);
+            Response.Redirect("index.aspx");
+            //Response.Cookies.Add(myCookie);
+
         }
     }
 
@@ -59,6 +85,7 @@ public partial class index : System.Web.UI.Page
 
                 objCookie.Values.Add("name", customerUserInfo.First_name + " " + customerUserInfo.Last_name);  // Add First Name
                 objCookie.Values.Add("TimeLoggin", now.ToString());         // Add time when they login
+		objCookie.Values.Add("isAdmin", "true");  
                 Response.Cookies.Add(objCookie);
                 Response.Redirect("admin.aspx");
             }
@@ -67,6 +94,14 @@ public partial class index : System.Web.UI.Page
             // // // // // // //
             else if (customerUserInfo.IsAdmin == false)
             {
+		objCookie = new HttpCookie("userInformation");
+                now = DateTime.Now;
+
+                objCookie.Values.Add("name", customerUserInfo.First_name + " " + customerUserInfo.Last_name);  // Add First Name
+                objCookie.Values.Add("TimeLoggin", now.ToString());         // Add time when they login
+                objCookie.Values.Add("isAdmin", "false");   
+                Response.Cookies.Add(objCookie);
+                Response.Redirect("admin.aspx");
                 lblResult.Text = "Cool dudes! your in!";
             }
             // HARD 

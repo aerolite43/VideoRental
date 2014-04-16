@@ -12,6 +12,7 @@ public partial class Movie : System.Web.UI.Page
         string movieId = HttpContext.Current.Request.QueryString["id"];
         Model model = new Model();
         allmovies movie = model.getMovieById(Convert.ToInt32(movieId));
+	List<cast> casts = model.getCharactersById(Convert.ToInt32(movieId));
         if (movie != null)
         {
             titleText.InnerText += " " + movie.Title;
@@ -20,6 +21,9 @@ public partial class Movie : System.Web.UI.Page
             companyText.InnerText += " " + movie.Company;
             titleText2.InnerText += " " + movie.Title;
             titleText3.InnerText += " " + movie.Title;
+            foreach(cast cast in casts){
+                actorText.InnerHtml += "<br> " + cast.castname;
+            }
         }
         else
         {
@@ -33,6 +37,27 @@ public partial class Movie : System.Web.UI.Page
 
             Response.Cookies.Add(objCookie);
             Response.Redirect("error.aspx");
+        }
+        // Check if the user is logged in or not
+        HttpCookie userInformationCookie = Request.Cookies["userInformation"];
+        /*********************
+         * *******************
+         User is not logged in
+         * *******************
+         *********************/
+        if (userInformationCookie == null)
+        {
+            registerButton.Visible = true;
+        }
+
+         /*********************
+         * *******************
+         User is logged in
+         * *******************
+         *********************/
+        else
+        {
+            addToCartButton.Visible = true;
         }
         
 
