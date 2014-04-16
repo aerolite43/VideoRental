@@ -68,7 +68,7 @@
         <thead>
           <tr><th>Order#</th><th>Title</th><th>Price</th><th></th></tr>
         </thead>
-        <tbody>
+        <tbody runat="server" id="tableOrder">
           <tr><td>45</td><td>2.45%</td><td>$100</td><td><span class="glyphicon glyphicon-remove"></span></td></tr>
           <tr><td>289</td><td>56.2%</td><td>$100</td><td><span class="glyphicon glyphicon-remove"></span></td></tr>
           <tr><td>98</td><td>25%</td><td>$100</td><td><span class="glyphicon glyphicon-remove"></span></td></tr>
@@ -78,6 +78,7 @@
          </td></tr>
         </tbody>
       </table>
+      <p runat="server" id="cookiesText"></p>
      
        </div><!--/row-->
        </form>

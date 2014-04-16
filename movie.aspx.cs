@@ -65,9 +65,20 @@ public partial class Movie : System.Web.UI.Page
     }
     protected void btnAddToCart_Click(object sender, EventArgs e)
     {
-        HttpCookie cartCookie = new HttpCookie("cartInformation");
-        cartCookie.Values.Add(movieIdText.InnerText, "true");
+        // If cookie does not exsist
+        HttpCookie cartCookie = Request.Cookies.Get("cartInformation");
+        if (cartCookie == null)
+        {
+            cartCookie = new HttpCookie("cartInformation");
+            cartCookie.Values.Add(movieIdText.InnerText, "");
+            HttpContext.Current.Response.SetCookie(cartCookie);
+        }
+        // If it exsist just add additional movie son!
+        else
+        {
+            cartCookie.Values.Add(movieIdText.InnerText, "");
+            HttpContext.Current.Response.SetCookie(cartCookie);
+        }
         Response.Redirect("index.aspx");
-
     }
 }
