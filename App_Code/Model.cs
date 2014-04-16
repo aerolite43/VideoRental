@@ -164,8 +164,8 @@ public class Model
             Province = prov,
             Pcode = postal,
             Phone = phone,
-            Login = firstName,
-            Password = lastName,
+            Login = username,
+            Password = pass,
             IsAdmin = status
         };
 
