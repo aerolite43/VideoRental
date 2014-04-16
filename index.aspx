@@ -91,7 +91,28 @@
        
     
             <br />
-            <asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label>
+
+            <div style="position:relative; top: -2px; left: -15px;">
+            <div style="width:228px; position:absolute;"><asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label> 
+                
+            </div>
+
+            <div style="width:228px; float:right;">
+       &nbsp;<asp:Label 
+                    ID="Label4" runat="server" Font-Bold="True" Font-Underline="True" 
+                    Text="New Release One"></asp:Label>
+                <br />
+                <br />
+       <asp:Label ID="lblNew1" runat="server" Text="New1" Font-Italic="True"></asp:Label>
+                <br />
+                <br />
+&nbsp;<asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Underline="True" 
+                    Text="New Release Two"></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="lblNew2" runat="server" Font-Italic="True" Text="New2"></asp:Label>
+       </div>
+       </div>
        
 
     
@@ -114,6 +135,16 @@
                     Text="Register" />
                 <br />
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
+                <br />
+
+                <asp:Label ID="lblPromo" runat="server" BorderStyle="Dotted" 
+                    style="margin-left: 54px" Text="Promo Film" Width="95px"></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="lblPromo1" runat="server" Text="Label"></asp:Label>
+                <br />
+                <asp:Label ID="lblPromo2" runat="server" Text="Label"></asp:Label>
+
             </div>
             <div id="LogoutbuttonDiv" runat="server">
             <h1 runat="server" visible="false" id="greetingsText">Hi</h1>
@@ -121,6 +152,9 @@
                     onclick="btnLogout_Click" />
             &nbsp;<asp:Button ID="btnCheckout" runat="server" onclick="btnCheckout_Click" 
                     Text="Checkout" />
+                <br />
+                
+                <br />
             </div>
     </div>
 
@@ -129,7 +163,7 @@
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DatabaseConnection2 %>" 
+        ConnectionString="<%$ ConnectionStrings:DatabaseConnection3 %>" 
         SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
     <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
     </asp:GridView>

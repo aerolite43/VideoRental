@@ -49,6 +49,9 @@ public partial class index : System.Web.UI.Page
 
             setMovieTitle();
             setTop10();
+            setNewRelease1();
+            setNewRelease2();
+            setPromo();
         }
     }
 
@@ -122,6 +125,7 @@ public partial class index : System.Web.UI.Page
             lblResult.Text = "Invalid credential. Please try again.";
     }
 
+    
     public void sql()
     {
         string conString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -157,9 +161,9 @@ public partial class index : System.Web.UI.Page
 
     }
 
+    
     public void setTop10()
      {
-
          var listTop = model2.getTop10Rentals();
          string top10 = "";
          int counter = 1;
@@ -167,10 +171,64 @@ public partial class index : System.Web.UI.Page
             top10 += counter + ". <a href=\"movie.aspx?id=" + movie.Id + "\">" + movie.Title + "</a><br>";
             counter++;
         }
+
         lblTop10.Text = top10;
          //lblTop10.Text = listTop[0].Company;
       }
 
+    public void setNewRelease1()
+    {
+
+        var listTop = model2.NewRelesae1();
+        string top10 = "";
+        //string release2 = "";
+        //int counter = 1;
+        foreach (allmovies movie in listTop)
+        {
+            top10 += ". " + movie.Title + "<br>";
+            //release2 += ". " + movie.Title + "<br>";
+            // counter++;
+        }
+        lblNew1.Text = top10;
+        //lblNew2.Text = release2;
+    }
+
+
+
+    public void setNewRelease2()
+    {
+
+        var listTop2 = model2.NewRelesae2();
+        string release2 = "";
+
+        foreach (allmovies movie in listTop2)
+        {
+            release2 += ". " + movie.Title + "<br>";
+
+        }
+        lblNew2.Text = release2;
+    }
+
+    public void setPromo()
+    {
+
+        var listTop2 = model2.Promo();
+        string release2 = "";
+        string release3 = "";
+
+        var listMovies = model.getMovie();
+
+
+
+        foreach (allmovies movie in listTop2)
+        {
+            release2 += "* " + movie.Title + "<br>";
+
+            release3 += " "+ " "+ movie.Editor + "<br>";
+        }
+        lblPromo1.Text = release2;
+        lblPromo2.Text = release3;
+    }
 
     protected void Button1_Click(object sender, EventArgs e)
     {

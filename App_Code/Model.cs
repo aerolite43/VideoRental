@@ -18,7 +18,7 @@ public class Model
     public Model()
 	{
         // Load database connection string
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString;
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection3"].ConnectionString;
         db = new DataContext(conString);
 	}
 
@@ -126,16 +126,47 @@ public class Model
         return list;
     }
 
-    /* 
-     @author Andrei Cordova
-     @description RETURN me new release movies.
-     perhaps check the date when a movie was added.
-     @Date 27/03/14
-     @TargetDate April 9'th
-    */
-    public List<allmovies> getNewReleases()
+    public List<allmovies> NewRelesae1()
     {
-        return null;
+        var tTop = db.GetTable<allmovies>();
+
+        //displays new release 1
+        //news=est movies from database are from 1995
+        var query2 = (from movies in tTop where movies.Title.Contains("1995") select movies).Take(1);
+
+        //var query2 = from movies in tTop where movies.Id == 2 select movies;
+
+
+        var list = new List<allmovies>(query2);
+
+        return list;
+    }
+
+
+    public List<allmovies> NewRelesae2()
+    {
+        var tTop = db.GetTable<allmovies>();
+
+        //displays new release
+
+        var query3 = (from movies in tTop where movies.Title.Contains("1995") orderby movies.Director select movies).Take(1);
+
+        var list = new List<allmovies>(query3);
+
+        return list;
+    }
+
+    public List<allmovies> Promo()
+    {
+        var tTop = db.GetTable<allmovies>();
+
+        //displays new release
+
+        var query3 = (from movies in tTop where movies.Title.Contains("1994") orderby movies.Director select movies).Take(1);
+
+        var list = new List<allmovies>(query3);
+
+        return list;
     }
 
     /* 
