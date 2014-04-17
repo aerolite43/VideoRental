@@ -32,6 +32,8 @@
         <asp:Label ID="lblMovieCompany1" runat="server" Text="Movie company"></asp:Label>
         <br />
         <asp:Label ID="lblMovieSummary1" runat="server" Text="Movie summary"></asp:Label>
+	<br />
+            <asp:Label ID="downloadLabel" runat="server" Text="Download Now"></asp:Label>
         <br />
         <br />
         <asp:Image ID="Image1" runat="server" ImageUrl="~/images/line.jpg" />
@@ -42,6 +44,8 @@
         <asp:Label ID="lblMovieCompany2" runat="server" Text="Movie company"></asp:Label>
         <br />
         <asp:Label ID="lblMovieSummary2" runat="server" Text="Movie summary"></asp:Label>
+                    <br />
+                    <asp:Label ID="downloadLabel2" runat="server" Text="Download Now"></asp:Label>
         <br />
         <br />
         <asp:Image ID="Image4" runat="server" ImageUrl="~/images/line.jpg" />
@@ -53,6 +57,8 @@
         <asp:Label ID="lblMovieCompany3" runat="server" Text="Movie company"></asp:Label>
         <br />
         <asp:Label ID="lblMovieSummary3" runat="server" Text="Movie summary"></asp:Label>
+                    <br />
+                    <asp:Label ID="downloadLabel3" runat="server" Text="Download Now"></asp:Label>
         <br />
         <br />
         <asp:Image ID="Image5" runat="server" ImageUrl="~/images/line.jpg" />
@@ -80,6 +86,7 @@
                 <br />
 
             </div>
+                        <div runat="server" id="topTenandNewReleases">
                     <asp:Image ID="ImageB" runat="server" style="margin-top:5x;" ImageUrl="~/images/comedy.jpg" />
                     <br />
                         
@@ -93,7 +100,9 @@
             <br />
 
             <div style="position:relative; top: -2px; left: -15px;">
-            <div style="width:228px; position:absolute;"><asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label> 
+            <div style="width:228px; position:absolute;">
+            
+            <asp:Label ID="lblTop10" runat="server" Text="Top10"></asp:Label> 
                 
             </div>
 
@@ -112,6 +121,9 @@
                 <br />
                 <asp:Label ID="lblNew2" runat="server" Font-Italic="True" Text="New2"></asp:Label>
        </div>
+       </div>
+       </div>
+       <div id="searchResultDiv" runat="server" visible="false">
        </div>
        
 
@@ -163,7 +175,7 @@
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DatabaseConnection3 %>" 
+        ConnectionString="<%$ ConnectionStrings:DatabaseConnection2 %>" 
         SelectCommand="SELECT * FROM [allmovies]"></asp:SqlDataSource>
     <asp:GridView ID="grdView" runat="server" AutoGenerateColumns="False">
     </asp:GridView>

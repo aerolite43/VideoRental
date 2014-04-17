@@ -18,7 +18,7 @@ public class Model
     public Model()
 	{
         // Load database connection string
-        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection3"].ConnectionString;
+        conString = WebConfigurationManager.ConnectionStrings["DatabaseConnection2"].ConnectionString;
         db = new DataContext(conString);
 	}
 
@@ -39,7 +39,24 @@ public class Model
         // Convert the result into an array
         var list = new List<allmovies>(query);
 
+	list = ShuffleList(list);
         return list;
+    }
+
+    private List<E> ShuffleList<E>(List<E> inputList)
+    {
+        List<E> randomList = new List<E>();
+
+        Random r = new Random();
+        int randomIndex = 0;
+        while (inputList.Count > 0)
+        {
+            randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+            randomList.Add(inputList[randomIndex]); //add it to the new, random list
+            inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+        }
+
+        return randomList; //return the new random list
     }
 
     /* 

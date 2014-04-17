@@ -151,13 +151,20 @@ public partial class index : System.Web.UI.Page
         var listMovies = model.getMovie();
 
 
-        lblMovieTitle1.Text = listMovies[0].Company;
+        lblMovieTitle1.Text = listMovies[0].Title;
         lblMovieSummary1.Text = listMovies[0].Director;
         lblMovieCompany1.Text = listMovies[0].Editor;
+	downloadLabel.Text = "<a href=\"movie.aspx?id="+listMovies[0].Id+"\">Order now</a>";
 
-        lblMovieTitle2.Text = listMovies[1].Company;
+        lblMovieTitle2.Text = listMovies[1].Title;
         lblMovieSummary2.Text = listMovies[1].Director;
         lblMovieCompany2.Text = listMovies[1].Editor;
+	downloadLabel2.Text = "<a href=\"movie.aspx?id=" + listMovies[1].Id + "\">Order now</a>";
+	
+        lblMovieTitle3.Text = listMovies[2].Title;
+        lblMovieSummary3.Text = listMovies[2].Director;
+        lblMovieCompany3.Text = listMovies[2].Editor;
+        downloadLabel3.Text = "<a href=\"movie.aspx?id=" + listMovies[2].Id + "\">Order now</a>";
 
     }
 
@@ -185,7 +192,7 @@ public partial class index : System.Web.UI.Page
         //int counter = 1;
         foreach (allmovies movie in listTop)
         {
-            top10 += ". " + movie.Title + "<br>";
+            top10 += ". <a href=\"movie.aspx?id=" + movie.Id + "\">" + movie.Title + "</a><br>";
             //release2 += ". " + movie.Title + "<br>";
             // counter++;
         }
@@ -203,7 +210,7 @@ public partial class index : System.Web.UI.Page
 
         foreach (allmovies movie in listTop2)
         {
-            release2 += ". " + movie.Title + "<br>";
+            release2 += ". <a href=\"movie.aspx?id="+movie.Id+"\">" + movie.Title + "</a><br>";
 
         }
         lblNew2.Text = release2;
@@ -218,16 +225,18 @@ public partial class index : System.Web.UI.Page
 
         var listMovies = model.getMovie();
 
-
+        string movieId = "";
 
         foreach (allmovies movie in listTop2)
         {
             release2 += "* " + movie.Title + "<br>";
 
             release3 += " "+ " "+ movie.Editor + "<br>";
+            movieId = Convert.ToString(movie.Id);
         }
         lblPromo1.Text = release2;
         lblPromo2.Text = release3;
+        lblPromo2.Text += "<br /><a href=\"movie.aspx?id=" + movieId + "\">Order Now</a>";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -262,20 +271,33 @@ public partial class index : System.Web.UI.Page
     }
     protected void btnSearch_Click(object sender, EventArgs e)
     {
+        topTenandNewReleases.Visible = false;
+        searchResultDiv.Visible = true;
         List<allmovies> moviesFound = model.search(DropDownList1.SelectedValue, txtBoxSearch.Text);
+        
 
         if (moviesFound.Count != 0)
         {
             string moviesText = "";
             foreach (allmovies movie in moviesFound)
             {
-                moviesText += movie.Title + "<br/>";
+                moviesText += "<a href=\"movie.aspx?id="+movie.Id+"\">" + movie.Title + "</a><br />";
+
             }
-            lblTop10.Text = moviesText;
+            if (moviesFound.Count == 1)
+            {
+                moviesText += "<br><br>" + moviesFound.Count + " movie found";
+            }
+            else
+            {
+                moviesText += "<br><br>" + moviesFound.Count + " movies found";
+            }
+
+            searchResultDiv.InnerHtml = moviesText;
         }
         else
         {
-            lblTop10.Text = "No result..";
+            searchResultDiv.InnerHtml = "No result..";
         }
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
