@@ -47,7 +47,7 @@ public partial class order : System.Web.UI.Page
 
             Random rand = new Random((int)DateTime.Now.Ticks);
             var numIterations = rand.Next(100, 500); // GET RANDOM NUMBER
-            htmlResult += "<tr><td>" + counter + "</td><td>" + movie.Title + "</td><td>$" + numIterations.ToString() + "</td><td><span class=\"glyphicon glyphicon-remove\"></span></td></tr>";
+            htmlResult += "<tr><td>" + counter + "</td><td>" + movie.Title + "</td><td>$" + numIterations.ToString() + "</td><td><a href=\"?delete="+(counter-1)+"\"><span class=\"glyphicon glyphicon-remove\"></span></a></td></tr>";
             counter++;
             // <tr><td>45</td><td>2.45%</td><td>$100</td><td><span class="glyphicon glyphicon-remove"></span></td></tr>
         }
