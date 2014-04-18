@@ -47,8 +47,8 @@
       <hr>
       
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#"><i class="glyphicon glyphicon-flash"></i> Home</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-plus"></i> Add More Orders</a></li>
+        <li><a href="index.aspx"><i class="glyphicon glyphicon-plus"></i> Add More Orders</a></li>
+        <li><a href="Thanks.aspx"><i class="glyphicon glyphicon-flash"></i> Confirm Orders</a></li>
       </ul>
       
       <hr>
