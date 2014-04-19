@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using System.Data.Linq;
+using model;
+
+
 
 
 public partial class index : System.Web.UI.Page

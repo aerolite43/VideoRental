@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using model;
 
 public partial class Movie : System.Web.UI.Page
 {
